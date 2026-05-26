@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The True Sovereign Protocol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f1e8 0%, #ebe4d1 100%);
+            min-height: 100vh;
+            font-family: 'Crimson Text', serif;
+            color: #2a2419;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .document {
+            max-width: 750px;
+            width: 100%;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, #fdfbf7 0%, #f8f4ea 100%);
+            padding: 4rem 3.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15),
+                        inset 0 1px 0 rgba(255,255,255,0.6),
+                        0 1px 2px rgba(0,0,0,0.1);
+            border: 1px solid #d4c5a9;
+            position: relative;
+            animation: fadeIn 1.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .document::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(139, 119, 83, 0.03) 2px,
+                rgba(139, 119, 83, 0.03) 4px
+            );
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #8b7753;
+            padding-bottom: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .seal {
+            font-size: 2.5rem;
+            color: #8b7753;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.3em;
+        }
+
+        .title {
+            font-family: 'IM Fell English', serif;
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            line-height: 1.3;
+            margin-bottom: 0.4rem;
+        }
+
+        .subtitle {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #5a4a3a;
+            letter-spacing: 0.08em;
+        }
+
+        .launch-block {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 1.8rem 1rem;
+            border-top: 1px solid #d4c5a9;
+            border-bottom: 1px solid #d4c5a9;
+        }
+
+        .launch-title {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #5a4a3a;
+            margin-bottom: 0.6rem;
+        }
+
+        .coming-soon {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.9rem;
+            color: #2a2419;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon span {
+            color: #8b7753;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #4a3c2c;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .bookmark-btn {
+            display: inline-block;
+            font-family: 'IM Fell English', serif;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            color: #fdfbf7;
+            background: #2a2419;
+            border: 1px solid #2a2419;
+            padding: 0.7rem 2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .bookmark-btn:hover {
+            background: #8b7753;
+            border-color: #8b7753;
+        }
+
+        .bookmark-note {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #8b7753;
+            margin-top: 0.8rem;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-label {
+            font-family: 'IM Fell English', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #8b7753;
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .nav-card {
+            display: block;
+            text-decoration: none;
+            color: #2a2419;
+            border: 1px solid #d4c5a9;
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+            transition: border-color 0.2s, background 0.2s;
+            position: relative;
+            background: rgba(253, 251, 247, 0.5);
+        }
+
+        .nav-card:hover {
+            border-color: #8b7753;
+            background: rgba(139, 119, 83, 0.05);
+        }
+
+        .nav-card.disabled {
+            opacity: 0.5;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .nav-card-roman {
+            font-family: 'IM Fell English', serif;
+            font-size: 0.85rem;
+            color: #8b7753;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.4rem;
+        }
+
+        .nav-card-title {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .nav-card-desc {
+            font-size: 0.92rem;
+            font-style: italic;
+            color: #5a4a3a;
+            line-height: 1.5;
+        }
+
+        .nav-card-status {
+            display: inline-block;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #8b7753;
+            border: 1px solid #d4c5a9;
+            padding: 0.15rem 0.5rem;
+            margin-top: 0.6rem;
+        }
+
+        .ornament {
+            text-align: center;
+            color: #8b7753;
+            font-size: 1.2rem;
+            letter-spacing: 0.4em;
+            margin: 2rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.88rem;
+            font-style: italic;
+            color: #8b7753;
+            border-top: 1px solid #d4c5a9;
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .document {
+                padding: 2.5rem 1.5rem;
+            }
+            .title {
+                font-size: 1.8rem;
+            }
+            .coming-soon {
+                font-size: 1.5rem;
+            }
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <div class="header">
+            <div class="seal">✦ ✦ ✦ ✦ ✦</div>
+            <h1 class="title">The True Sovereign Protocol</h1>
+            <div class="subtitle">Global Monetary Protocol — Est. 2026</div>
+        </div>
+
+        <div class="launch-block">
+            <div class="launch-title">Global Protocol Launch</div>
+            <div class="coming-soon">Coming <span>Soon</span></div>
+            <p class="tagline">Bookmark this page and join us at launch to build a better world - perfect money issued debt-free and out of the hands of the state.</p>
+            <p class="tagline">Truely sovereign.</p>
+             <p class="tagline">Three tiers of staking including a completely free tier.  That's right - completely free crypto just for being part of the community.</p>
+            <a href="#" class="bookmark-btn" onclick="handleBookmark(event)">Bookmark This Page</a>
+            <div class="bookmark-note">Press Ctrl+D (Windows) or ⌘+D (Mac) to bookmark</div>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-label">Documents</div>
+            <div class="nav-grid">
+                <a href="manifesto.html" class="nav-card">
+                    <div class="nav-card-roman">I.</div>
+                    <div class="nav-card-title">The Manifesto</div>
+                    <div class="nav-card-desc">A moral and political indictment of debt-based fiat money — and the case for sovereign monetary freedom.</div>
+                    <div class="nav-card-status">Available Now</div>
+                </a>
+                <a href="#" class="nav-card disabled">
+                    <div class="nav-card-roman">II.</div>
+                    <div class="nav-card-title">The Whitepaper</div>
+                    <div class="nav-card-desc">Technical specification of the True Sovereign protocol — elastic supply, proof-of-stake, sovereign debt retirement.</div>
+                    <div class="nav-card-status">Coming 2026</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="ornament">❧</div>
+
+        <div class="footer">
+            <p>The age of corrupted money is ending.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function handleBookmark(e) {
+            e.preventDefault();
+            if (window.sidebar && window.sidebar.addPanel) {
+                window.sidebar.addPanel(document.title, window.location.href, '');
+            } else {
+                alert('Press Ctrl+D (Windows) or ⌘+D (Mac) to bookmark this page.');
+            }
+        }
+    </script>
+</body>
+</html>
